@@ -24,7 +24,7 @@ var config = {
     var database = firebase.database();
     database.ref("/trains").on("child_added", function(snapshot) {
 
-        //  create local variables to store the data from firebase
+
         var trainDiff = 0;
         var trainRemainder = 0;
         var minutesTillArrival = "";
@@ -43,4 +43,41 @@ var config = {
             "<td>" + nextTrainTime + "  " + "<a><span class='glyphicon glyphicon-remove icon-hidden' aria-hidden='true'></span></a>" + "</td></tr>"
         );
         
-    });
+        $("span").hide();
+    
+        $("tr").hover(
+            function() {
+                $(this).find("span").show();
+            },
+            function() {
+                $(this).find("span").hide();
+            });
+    
+        });
+
+        
+
+    var storeInputs = function(event) {
+
+        event.preventDefault();
+    
+        trainName = aTrain.val().trim();
+        trainDestination = aTrainDestination.val().trim();
+        trainTime = moment(aTrainTime.val().trim(), "HH:mm").subtract(1, "years").format("X");
+        trainFrequency = aTimeFreq.val().trim();
+    
+        database.ref("/trains").push({
+            name: trainName,
+            destination: trainDestination,
+            time: trainTime,
+            frequency: trainFrequency,
+            nextArrival: nextArrival,
+            minutesAway: minutesAway,
+            date_added: firebase.database.ServerValue.TIMESTAMP
+        });
+    
+        aTrain.val("");
+        aTrainDestination.val("");
+        aTrainTime.val("");
+        aTimeFreq.val("");
+    };
