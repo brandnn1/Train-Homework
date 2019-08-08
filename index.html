@@ -38,6 +38,34 @@
 
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading panel-custom">
+                Add Train
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="trainName">Train Name:</label>
+                        <input type="text" class="form-control" id="train-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <input type="text" class="form-control" id="train-destination" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startYear">First Train Time: (military time) </label>
+                        <input type="text" class="form-control" placeholder="HH:MM" id="train-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endYear">Frequency (minutes)</label>
+                        <input type="text" class="form-control" id="time-freq">
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" id="btn-add" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     </div>
     
