@@ -81,3 +81,27 @@ var config = {
         aTrainTime.val("");
         aTimeFreq.val("");
     };
+    
+    // Calls storeInputs function if submit button clicked
+    $("#btn-add").on("click", function(event) {
+        // form validation - if empty - alert
+        if (aTrain.val().length === 0 || aTrainDestination.val().length === 0 || aTrainTime.val().length === 0 || aTimeFreq === 0) {
+            alert("Please Fill All Required Fields");
+        } else {
+            // if form is filled out, run function
+            storeInputs(event);
+        }
+    });
+    
+    // Calls storeInputs function if enter key is clicked
+    $('form').on("keypress", function(event) {
+        if (event.which === 13) {
+            // form validation - if empty - alert
+            if (aTrain.val().length === 0 || aTrainDestination.val().length === 0 || aTrainTime.val().length === 0 || aTimeFreq === 0) {
+                alert("Please Fill All Required Fields");
+            } else {
+                // if form is filled out, run function
+                storeInputs(event);
+            }
+        }
+    });
